@@ -1,6 +1,6 @@
 #include "Application.h"
 
-//#include <glad/glad.h>
+#include <glad.h>
 
 #include "Events/MouseEvent.h"
 #include "KeyCodes.h"
@@ -10,6 +10,8 @@ namespace Nova {
     void Application::Initialize() {
         window = Window::Create();
         window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+
+        renderer = Renderer::Create(window);
 
         keyboard.setWindow(window);
 
@@ -30,9 +32,8 @@ namespace Nova {
     void Application::Run() {
         while (running)
         {
-            //glClearColor(1, 0, 1, 1);
-            //glClear(GL_COLOR_BUFFER_BIT);
             window->OnUpdate();
+
             Update();
         }
     }
@@ -121,6 +122,7 @@ namespace Nova {
     bool Application::OnWindowResize(WindowResizeEvent& e) {
         window->width = e.GetWidth();
         window->height = e.GetHeight();
+        renderer->OnWindowResize(e.GetWidth(), e.GetHeight());
         WindowResized();
         return true;
     }

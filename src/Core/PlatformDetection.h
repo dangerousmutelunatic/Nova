@@ -36,6 +36,7 @@
     #error "Android is not supported!"
 #elif defined(__linux__)
     #define NOVA_PLATFORM_LINUX
+    #define NOVA_PLATFORM_OPENGL
 #else
     /* Unknown compiler/platform */
     #error "Unknown platform!"

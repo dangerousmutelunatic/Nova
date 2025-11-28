@@ -44,7 +44,7 @@ namespace Nova {
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
     	NOVA_ASSERT(status, "Could not initialize GLAD!");
     	glfwSetWindowUserPointer(window, &data);
-        SetVSync(true);
+        SetVSync(false);
 
         // Set GLFW callbacks
 		glfwSetWindowSizeCallback(window, [](GLFWwindow* window, int width, int height) {
@@ -151,8 +151,12 @@ namespace Nova {
 
     void LinuxWindow::SetSize(const int width, const int height) {
     	glfwSetWindowSize(window, width, height);
-    	this->width = width;
-    	this->height = height;
+		WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+		data.Width = width;
+		data.Height = height;
+
+		WindowResizeEvent event(width, height);
+		data.EventCallback(event);
     }
 
     bool LinuxWindow::IsKeyPressed(int key) {

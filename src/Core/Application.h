@@ -5,6 +5,7 @@
 #include "Events/ApplicationEvent.h"
 #include "Events/KeyEvent.h"
 #include "Events/MouseEvent.h"
+#include "Renderer.h"
 
 namespace Nova {
 
@@ -64,6 +65,8 @@ namespace Nova {
 
         Ref<Window> window;
         bool running = true;
+
+        Ref<Renderer> renderer;
     };
 
 }

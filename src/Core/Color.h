@@ -76,6 +76,6 @@ namespace Nova::Color {
     constexpr RGBA Yellow = {255, 255, 0};
     constexpr RGBA Magenta = {255, 0, 255};
     constexpr RGBA Cyan = {0, 255, 255};
-    constexpr RGBA TardisBlue = 0x003b6fff;
+    constexpr RGBA TardisBlue = std::uint32_t(0x003b6fff);
 
 }

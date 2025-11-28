@@ -11,8 +11,8 @@ namespace Nova {
         unsigned int Height;
 
         WindowProps(const std::string& title = "Nova Application",
-                    unsigned int width = 100,
-                    unsigned int height = 100)
+                    unsigned int width = 800,
+                    unsigned int height = 600)
             : Title(title), Width(width), Height(height)
         {
         }
